@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/navigator/tabnavigator.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,14 +8,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("app"),
-        ),
-        body: Container(
-          child: Text("content"),
-        ),
-      ),
+      title: "flutter demo",
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home:TabNavigator(),
     );
   }
 }
