@@ -3,15 +3,21 @@ import 'package:flutter/material.dart';
 class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return new HomePageState();
+    return new HomePageState(2);
   }
 }
 
 class HomePageState extends State<HomePage> {
+
+  HomePageState(int i);
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text("home"),

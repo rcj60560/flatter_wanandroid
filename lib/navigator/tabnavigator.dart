@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/android/tixi_page.dart';
+import 'package:flutter_app/android/android_page.dart';
 import 'package:flutter_app/home/home_page.dart';
 
 class TabNavigator extends StatefulWidget {
@@ -26,7 +26,7 @@ class TabNavigatorState extends State<TabNavigator> {
         controller: _pageController,
         children: <Widget>[
           HomePage(),
-          TiXi(),
+          Android(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
