@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'activity_page.dart';
+import 'package:flutter_app/page/android/activity_page.dart';
 
 class Android extends StatefulWidget {
   @override

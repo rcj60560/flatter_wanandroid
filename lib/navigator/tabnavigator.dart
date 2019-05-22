@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/android/android_page.dart';
-import 'package:flutter_app/home/home_page.dart';
+import 'package:flutter_app/page/android/android_page.dart';
+import 'package:flutter_app/page/home/home_page.dart';
 
 class TabNavigator extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return new TabNavigatorState();
   }
 }
+
+
+
 
 class TabNavigatorState extends State<TabNavigator> {
   final _defaultColor = Colors.grey;
@@ -20,7 +22,6 @@ class TabNavigatorState extends State<TabNavigator> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       body: PageView(
         controller: _pageController,
@@ -39,7 +40,7 @@ class TabNavigatorState extends State<TabNavigator> {
           },
           type: BottomNavigationBarType.fixed,
           items: [
-            _bottomItem("home", Icons.home, 0),
+            _bottomItem("page.home", Icons.home, 0),
             _bottomItem("android", Icons.android, 1),
           ]),
     );

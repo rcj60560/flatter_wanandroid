@@ -6,7 +6,6 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new MaterialApp(
       title: "flutter demo",
       theme: ThemeData(primarySwatch: Colors.blue),
