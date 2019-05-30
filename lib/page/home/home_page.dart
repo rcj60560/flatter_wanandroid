@@ -15,12 +15,16 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   GlobalKey<EasyRefreshState> _easyRefreshKey =
       new GlobalKey<EasyRefreshState>();
-  List<Datas> datas;
+  List<Datas> datas = new List();
+
+  ScrollController _scrollController = new ScrollController();
+  bool isLoading = false;
+  int currentPage = 0;
 
   @override
   void initState() {
     super.initState();
-    getData();
+    getData(true);
   }
 
   @override
@@ -39,16 +43,30 @@ class HomePageState extends State<HomePage> {
               child: Text("banner"),
             ),
             Expanded(
-              flex: 1,
-              child: Container(
-                child: ListView.builder(
-                  itemCount: datas.length,
-                  itemBuilder: (context, index) {
-                    return _getItem(datas, index);
-                  },
+                flex: 1,
+                child: datas.length == 0
+                    ? new Center(
+                        child: Text("暂无数据"),
+                      )
+                    : new RefreshIndicator(
+                        child: ListView.builder(
+                          controller: _scrollController,
+                          itemBuilder: (context, index) {
+                            return _getItem(datas, index);
+                          },
+                          itemCount: datas.length,
+                        ),
+                        onRefresh: _onRefresh,
+                      )
+//              child: Container(
+//                child: ListView.builder(
+//                  itemCount: datas.length,
+//                  itemBuilder: (context, index) {
+//                    return _getItem(datas, index);
+//                  },
+//                ),
+//              ),
                 ),
-              ),
-            ),
           ],
         ),
       ),
@@ -58,16 +76,22 @@ class HomePageState extends State<HomePage> {
   /**
    * 获取首页数据列表
    */
-  Future<Null> getData() async {
-    HomeModel homeModel = await HomeDao.fetch();
-    setState(() {
-      datas = homeModel.data.datas;
-    });
+  Future<Null> getData(bool refresh) async {
+    HomeModel homeModel = await HomeDao.fetch(refresh);
+    if (refresh) {
+      datas.clear();
+      setState(() {
+        datas.addAll(homeModel.data.datas);
+      });
+    } else {
+      setState(() {
+        datas.addAll(homeModel.data.datas);
+      });
+    }
   }
 
   Widget _getItem(List<Datas> datas, int index) {
     var data = datas[index];
-
     return GestureDetector(
       onTap: () {
         print("--->" + index.toString());
@@ -113,5 +137,15 @@ class HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  Future<void> _onRefesh() {}
+
+  void loadMoreData() async {
+    getData(false);
+  }
+
+  Future<void> _onRefresh() async {
+    getData(true);
   }
 }
