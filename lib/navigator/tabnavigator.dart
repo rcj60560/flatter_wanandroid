@@ -9,9 +9,6 @@ class TabNavigator extends StatefulWidget {
   }
 }
 
-
-
-
 class TabNavigatorState extends State<TabNavigator> {
   final _defaultColor = Colors.grey;
   final _activeColor = Colors.blue;
@@ -40,7 +37,7 @@ class TabNavigatorState extends State<TabNavigator> {
           },
           type: BottomNavigationBarType.fixed,
           items: [
-            _bottomItem("page.home", Icons.home, 0),
+            _bottomItem("homea", Icons.home, 0),
             _bottomItem("android", Icons.android, 1),
           ]),
     );
