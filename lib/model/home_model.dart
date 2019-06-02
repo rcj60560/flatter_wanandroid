@@ -1,12 +1,12 @@
 class HomeModel {
-  Data data;
+  HomeData data;
   int errorCode;
   String errorMsg;
 
   HomeModel({this.data, this.errorCode, this.errorMsg});
 
   HomeModel.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = json['data'] != null ? new HomeData.fromJson(json['data']) : null;
     errorCode = json['errorCode'];
     errorMsg = json['errorMsg'];
   }
@@ -22,16 +22,16 @@ class HomeModel {
   }
 }
 
-class Data {
+class HomeData {
   int curPage;
-  List<Datas> datas;
+  List<HomeDatas> datas;
   int offset;
   bool over;
   int pageCount;
   int size;
   int total;
 
-  Data(
+  HomeData(
       {this.curPage,
         this.datas,
         this.offset,
@@ -40,12 +40,12 @@ class Data {
         this.size,
         this.total});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  HomeData.fromJson(Map<String, dynamic> json) {
     curPage = json['curPage'];
     if (json['datas'] != null) {
-      datas = new List<Datas>();
+      datas = new List<HomeDatas>();
       json['datas'].forEach((v) {
-        datas.add(new Datas.fromJson(v));
+        datas.add(new HomeDatas.fromJson(v));
       });
     }
     offset = json['offset'];
@@ -70,7 +70,7 @@ class Data {
   }
 }
 
-class Datas {
+class HomeDatas {
   String apkLink;
   String author;
   int chapterId;
@@ -96,7 +96,7 @@ class Datas {
   int visible;
   int zan;
 
-  Datas(
+  HomeDatas(
       {this.apkLink,
         this.author,
         this.chapterId,
@@ -122,7 +122,7 @@ class Datas {
         this.visible,
         this.zan});
 
-  Datas.fromJson(Map<String, dynamic> json) {
+  HomeDatas.fromJson(Map<String, dynamic> json) {
     apkLink = json['apkLink'];
     author = json['author'];
     chapterId = json['chapterId'];

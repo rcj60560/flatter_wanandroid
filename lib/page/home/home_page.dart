@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/dao/bannder_dao.dart';
 import 'package:flutter_app/dao/home_dao.dart';
+import 'package:flutter_app/model/banner_moedl.dart';
 import 'package:flutter_app/model/home_model.dart';
 import 'package:flutter_app/model/home_model.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:common_utils/common_utils.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,7 +18,8 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   GlobalKey<EasyRefreshState> _easyRefreshKey =
       new GlobalKey<EasyRefreshState>();
-  List<Datas> datas = new List();
+  List<HomeDatas> datas = new List();
+  List<BannerData> bannerData = new List();
 
   ScrollController _scrollController = new ScrollController();
   bool isLoading = false;
@@ -24,7 +28,15 @@ class HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    getBanner();
     getData(true);
+    _scrollController.addListener(() {
+      var maxScroll = _scrollController.position.maxScrollExtent;
+      var pixel = _scrollController.position.pixels;
+      if (maxScroll == pixel) {
+        loadMoreData();
+      } else {}
+    });
   }
 
   @override
@@ -40,7 +52,14 @@ class HomePageState extends State<HomePage> {
               width: double.infinity,
               height: 150,
               color: Colors.red[200],
-              child: Text("banner"),
+              child: Swiper(
+                itemBuilder: (BuildContext context, int index) {
+                  return _getBanner(context, index);
+                },
+                itemCount: bannerData.length,
+                pagination: new SwiperPagination(),
+                control: new SwiperControl(),
+              ),
             ),
             Expanded(
                 flex: 1,
@@ -57,16 +76,7 @@ class HomePageState extends State<HomePage> {
                           itemCount: datas.length,
                         ),
                         onRefresh: _onRefresh,
-                      )
-//              child: Container(
-//                child: ListView.builder(
-//                  itemCount: datas.length,
-//                  itemBuilder: (context, index) {
-//                    return _getItem(datas, index);
-//                  },
-//                ),
-//              ),
-                ),
+                      )),
           ],
         ),
       ),
@@ -90,7 +100,7 @@ class HomePageState extends State<HomePage> {
     }
   }
 
-  Widget _getItem(List<Datas> datas, int index) {
+  Widget _getItem(List<HomeDatas> datas, int index) {
     var data = datas[index];
     return GestureDetector(
       onTap: () {
@@ -139,13 +149,27 @@ class HomePageState extends State<HomePage> {
     );
   }
 
-  Future<void> _onRefesh() {}
-
   void loadMoreData() async {
     getData(false);
   }
 
   Future<void> _onRefresh() async {
     getData(true);
+  }
+
+  void getBanner() async {
+    BannerModel bannerModel = await BannerDao.fetch();
+    setState(() {
+      bannerData.addAll(bannerModel.data);
+    });
+  }
+
+  Widget _getBanner(BuildContext context, int index) {
+    return bannerData.length == 0
+        ? null
+        : new Image.network(
+            bannerData[index].imagePath,
+            fit: BoxFit.fill,
+          );
   }
 }
