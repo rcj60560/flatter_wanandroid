@@ -4,6 +4,8 @@ import 'package:flutter_app/dao/home_dao.dart';
 import 'package:flutter_app/model/banner_moedl.dart';
 import 'package:flutter_app/model/home_model.dart';
 import 'package:flutter_app/model/home_model.dart';
+import 'package:flutter_app/utils/NavigatorUtil.dart';
+import 'package:flutter_app/widget/webview.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -104,7 +106,13 @@ class HomePageState extends State<HomePage> {
     var data = datas[index];
     return GestureDetector(
       onTap: () {
-        print("--->" + index.toString());
+        NavigatorUtil.push(
+            context,
+            WebView(
+              url: data.link,
+              title: data.superChapterName,
+              hideAppBar: true,
+            ));
       },
       child: Card(
         elevation: 5,
