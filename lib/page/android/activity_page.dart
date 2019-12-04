@@ -21,7 +21,7 @@ class ActivityLearn extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => WebView(
                                 url: 'https://www.jianshu.com/',
-                                title: '百度首页',
+                                title: '简书首页',
                                 hideAppBar: false,
                               )));
 //                  NavigatorUtil.push(
