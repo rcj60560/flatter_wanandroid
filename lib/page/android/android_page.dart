@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/dao/home_articlelist_dao.dart';
 
 import 'package:flutter_app/page/android/activity_page.dart';
+import 'package:flutter_app/page/android/trip_page.dart';
+import 'package:toast/toast.dart';
 
 class Android extends StatefulWidget {
   @override
@@ -118,27 +121,7 @@ class AndroidState extends State<Android> {
                     margin: EdgeInsets.all(15),
                     child: RaisedButton(
                       child: Text("弹窗"),
-                      onPressed: () {
-                        SimpleDialog(
-                          title: Text("标题"),
-                          titlePadding: EdgeInsets.all(10),
-                          children: <Widget>[
-                            SimpleDialogOption(
-                              child: Text("第一行"),
-                              onPressed: () {
-                                print("111111111111");
-                              },
-                            ),
-                            SimpleDialogOption(
-                              child: Text("第二行"),
-                              onPressed: () {
-                                print("22222222222");
-                              },
-                            )
-                          ],
-                          contentPadding: EdgeInsets.all(10),
-                        );
-                      },
+                      onPressed: () {},
                     ),
                   ),
                 ),
@@ -147,7 +130,10 @@ class AndroidState extends State<Android> {
                   child: Container(
                     margin: EdgeInsets.all(15),
                     child: RaisedButton(
-                      child: Text("弹窗"),
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> new TripPage()));
+                      },
+                      child: Text("旅游首页"),
                     ),
                   ),
                 ),
