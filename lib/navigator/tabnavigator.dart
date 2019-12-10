@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/page/android/android_page.dart';
+import 'package:flutter_app/page/android/widget_page.dart';
 import 'package:flutter_app/page/home/home_page.dart';
 
 class TabNavigator extends StatefulWidget {
@@ -25,7 +26,9 @@ class TabNavigatorState extends State<TabNavigator> {
         children: <Widget>[
           HomePage(),
           Android(),
+          WidgetPage(),
         ],
+        physics: NeverScrollableScrollPhysics(),
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
@@ -39,6 +42,7 @@ class TabNavigatorState extends State<TabNavigator> {
           items: [
             _bottomItem("homea", Icons.home, 0),
             _bottomItem("android", Icons.android, 1),
+            _bottomItem("widget", Icons.widgets, 2),
           ]),
     );
   }

@@ -43,6 +43,8 @@ class TripPageState extends State<TripPage> {
             banner(),
             LocalNavItem(localNavlist: localNavvList),
             GridNavItem(gridNavItem: gridNav),
+            GridNavItem(gridNavItem: gridNav),
+            GridNavItem(gridNavItem: gridNav),
           ],
         ),
       ),

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/dao/home_articlelist_dao.dart';
 
 import 'package:flutter_app/page/android/activity_page.dart';
 import 'package:flutter_app/page/android/trip_page.dart';
-import 'package:toast/toast.dart';
 
 class Android extends StatefulWidget {
   @override
@@ -68,6 +66,7 @@ class AndroidState extends State<Android> {
                 Expanded(
                   flex: 1,
                   child: IconButton(
+                    onPressed: () {},
                     icon: Icon(Icons.home),
                     iconSize: 22,
                   ),
@@ -75,6 +74,7 @@ class AndroidState extends State<Android> {
                 Expanded(
                   flex: 1,
                   child: RaisedButton(
+                    onPressed: () {},
                     child: Text("haha"),
                     textColor: Colors.red,
                   ),
@@ -119,9 +119,17 @@ class AndroidState extends State<Android> {
                   flex: 1,
                   child: Container(
                     margin: EdgeInsets.all(15),
-                    child: RaisedButton(
-                      child: Text("弹窗"),
-                      onPressed: () {},
+                    child: Builder(
+                      builder: (context) => RaisedButton(
+                        child: Text("dialog"),
+                        onPressed: () {
+                          showAboutDialog(
+                              context: context,
+                              applicationIcon: Icon(Icons.home),
+                              applicationName: "name",
+                              applicationVersion: "1.0.0");
+                        },
+                      ),
                     ),
                   ),
                 ),
@@ -131,7 +139,10 @@ class AndroidState extends State<Android> {
                     margin: EdgeInsets.all(15),
                     child: RaisedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> new TripPage()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => new TripPage()));
                       },
                       child: Text("旅游首页"),
                     ),
@@ -142,6 +153,7 @@ class AndroidState extends State<Android> {
                   child: Container(
                     margin: EdgeInsets.all(15),
                     child: RaisedButton(
+                      onPressed: () {},
                       child: Text("弹窗"),
                     ),
                   ),
@@ -160,6 +172,7 @@ class AndroidState extends State<Android> {
       child: Container(
         margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
         child: RaisedButton(
+          onPressed: () {},
           child: Text(title),
         ),
       ),

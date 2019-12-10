@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_app/model/banner_moedl.dart';
-import 'package:flutter_app/model/home_articlelist_model.dart';
 import 'package:http/http.dart' as http;
 
 const BANNER_URL = "https://www.wanandroid.com/banner/json";
