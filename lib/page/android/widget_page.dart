@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 
 class WidgetPage extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     _controller.addListener(() {
       print("输入的内容为:" + _controller.text);
     });
+    _scrollController.addListener(() {});
 
     return Scaffold(
       appBar: AppBar(title: Text("my widget")),
@@ -140,11 +142,79 @@ class WidgetPage extends StatelessWidget {
                 keyboardType: TextInputType.number,
                 controller: _controller,
                 textInputAction: TextInputAction.go,
-              )
+              ),
+              Container(
+                child: Text("snackBar BottomSheet"),
+              ),
+              Row(children: <Widget>[
+                Builder(
+                  builder: (context) => RaisedButton(
+                      onPressed: () {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text("haha"),
+                          duration: Duration(seconds: 3),
+                        ));
+                      },
+                      child: Text("show snackBar")),
+                ),
+                Builder(
+                    builder: (context) => RaisedButton(
+                        child: Text("show  bottomSheet"),
+                        onPressed: () {
+                          showBottomSheet(
+                              context: context,
+                              builder: (context) => Container(
+                                  height: 300.0,
+                                  child: Container(
+                                    child: ListView.separated(
+                                      itemCount: 10,
+                                      itemBuilder: (context, index) {
+                                        return GestureDetector(
+                                            onTap: () {
+                                              showDialog(
+                                                  context: context,
+                                                  builder: (context) =>
+                                                      SimpleDialog(
+                                                          title: Text("index :" +
+                                                              index
+                                                                  .toString())));
+                                            },
+                                            child: ListTile(
+                                              leading: Icon(Icons.widgets),
+                                              title: Text(
+                                                  "item:" + index.toString()),
+                                              trailing: Icon(
+                                                  Icons.keyboard_arrow_right),
+                                            ));
+                                      },
+                                      separatorBuilder: (context, index) {
+                                        return Container(
+                                            constraints:
+                                                BoxConstraints.tightFor(
+                                                    height: 1),
+                                            color: Colors.grey);
+                                      },
+                                      controller: _scrollController,
+                                    ),
+                                  )));
+                        })),
+              ])
             ],
           ),
         ),
       ),
     );
+  }
+
+  _getListviewItem() {
+    List<Widget> items = [];
+    for (int i = 0; i <= 10; i++) {
+      items.add(ListTile(
+        leading: Icon(Icons.import_contacts),
+        title: Text("item :" + i.toString()),
+        trailing: Icon(Icons.keyboard_arrow_right),
+      ));
+    }
+    return items;
   }
 }

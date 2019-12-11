@@ -40,7 +40,7 @@ class TabNavigatorState extends State<TabNavigator> {
           },
           type: BottomNavigationBarType.fixed,
           items: [
-            _bottomItem("homea", Icons.home, 0),
+            _bottomItem("home", Icons.home, 0),
             _bottomItem("android", Icons.android, 1),
             _bottomItem("widget", Icons.widgets, 2),
           ]),
@@ -49,14 +49,8 @@ class TabNavigatorState extends State<TabNavigator> {
 
   _bottomItem(String title, IconData icon, int i) {
     return BottomNavigationBarItem(
-        icon: Icon(
-          icon,
-          color: _defaultColor,
-        ),
-        activeIcon: Icon(
-          icon,
-          color: _activeColor,
-        ),
+        icon: Icon(icon, color: _defaultColor),
+        activeIcon: Icon(icon, color: _activeColor),
         title: Text(
           title,
           style: TextStyle(

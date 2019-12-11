@@ -6,10 +6,10 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: "flutter demo",
       theme: ThemeData(primarySwatch: Colors.blue),
-      home:TabNavigator(),
+      home: TabNavigator(),
     );
   }
 }
