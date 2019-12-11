@@ -206,15 +206,15 @@ class WidgetPage extends StatelessWidget {
     );
   }
 
-  _getListviewItem() {
-    List<Widget> items = [];
-    for (int i = 0; i <= 10; i++) {
-      items.add(ListTile(
-        leading: Icon(Icons.import_contacts),
-        title: Text("item :" + i.toString()),
-        trailing: Icon(Icons.keyboard_arrow_right),
-      ));
-    }
-    return items;
-  }
+//  _getListviewItem() {
+//    List<Widget> items = [];
+//    for (int i = 0; i <= 10; i++) {
+//      items.add(ListTile(
+//        leading: Icon(Icons.import_contacts),
+//        title: Text("item :" + i.toString()),
+//        trailing: Icon(Icons.keyboard_arrow_right),
+//      ));
+//    }
+//    return items;
+//  }
 }
