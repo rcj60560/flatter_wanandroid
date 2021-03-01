@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/navigator/tabnavigator.dart';
 
 void main() => runApp(MyApp());
+/**
+ * test
+ */
 
 class MyApp extends StatelessWidget {
   @override
