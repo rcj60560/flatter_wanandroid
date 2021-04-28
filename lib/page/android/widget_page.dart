@@ -5,7 +5,7 @@ import 'package:flutter_app/page/widget/layout_widget.dart';
 class WidgetPage extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
   final ScrollController _scrollController = ScrollController();
-  final List datas = List.from(["布局控件", "Column"]);
+  final List datas = List.from(["Row and Column", "Column"]);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class WidgetPage extends StatelessWidget {
         switch (index) {
           case 0:
             Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => LayoutWidget()));
+                .push(MaterialPageRoute(builder: (context) => LayoutWidgetRow()));
             break;
           case 1:
             print('sss');
