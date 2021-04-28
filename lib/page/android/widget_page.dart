@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/page/widget/layout_widget.dart';
+import 'package:flutter_app/page/widget/layout_widget_row.dart';
+import 'package:flutter_app/page/widget/layout_widget_stack.dart';
 
 class WidgetPage extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
   final ScrollController _scrollController = ScrollController();
-  final List datas = List.from(["Row and Column", "Column"]);
+  final List datas = List.from(["Row and Column", "Stack"]);
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +31,12 @@ class WidgetPage extends StatelessWidget {
       onTap: () {
         switch (index) {
           case 0:
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => LayoutWidgetRow()));
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => LayoutWidgetRow()));
             break;
           case 1:
-            print('sss');
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => LayoutWidgetStack()));
             break;
         }
       },
