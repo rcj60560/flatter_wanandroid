@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/page/widget/layout_widget_row.dart';
 import 'package:flutter_app/page/widget/layout_widget_stack.dart';
+import 'package:flutter_app/page/widget/layout_widget_wrap.dart';
 
 class WidgetPage extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
   final ScrollController _scrollController = ScrollController();
-  final List datas = List.from(["Row and Column", "Stack"]);
+  final List datas = List.from(["Row and Column", "Stack", "流式布局"]);
 
   //test github.login
 
@@ -39,6 +40,11 @@ class WidgetPage extends StatelessWidget {
           case 1:
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => LayoutWidgetStack()));
+            break;
+
+          case 2:
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => LayoutWidgetWrap()));
             break;
         }
       },
