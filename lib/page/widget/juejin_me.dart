@@ -22,7 +22,7 @@ class JueJinMeState extends State<JueJinMe> {
         child: ListView(
           children: List.generate(5, (index) {
             return Container(
-              child: JueJinItem("sdf","11"),
+              child: JueJinItem("我的",index.toString()),
             );
           }),
         ),
