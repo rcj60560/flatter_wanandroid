@@ -24,6 +24,7 @@ class HomePageState extends State<HomePage> {
   ScrollController _scrollController = new ScrollController();
   bool isLoading = false;
   int currentPage = 0;
+  
 
   @override
   void initState() {
