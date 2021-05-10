@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/page/net/net_widget.dart';
 import 'package:flutter_app/page/widget/juejin_me.dart';
 import 'package:flutter_app/page/widget/juejin_mine.dart';
 import 'package:flutter_app/page/widget/layout_widget_row.dart';
@@ -9,7 +10,8 @@ import 'package:flutter_app/page/widget/layout_widget_wrap.dart';
 class WidgetPage extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
   final ScrollController _scrollController = ScrollController();
-  final List datas = List.from(["Row and Column", "Stack", "流式布局", "掘金 我的页面","掘金 个人信息头部"]);
+  final List datas = List.from(
+      ["Row and Column", "Stack", "流式布局", "掘金 我的页面", "掘金 个人信息头部", "网络请求"]);
 
   //test github.login
 
@@ -56,8 +58,14 @@ class WidgetPage extends StatelessWidget {
             break;
 
           case 4:
-            Navigator.of(context).push(MaterialPageRoute(builder: (context){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
               return JuejinMine();
+            }));
+            break;
+
+          case 5:
+            Navigator.of(context).push(MaterialPageRoute(builder: (c) {
+              return NetLayout();
             }));
             break;
         }
