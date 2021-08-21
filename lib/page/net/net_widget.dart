@@ -18,21 +18,43 @@ class NetLayoutState extends State<NetLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("网络请求"),
+        title: Text(""),
       ),
       body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              RaisedButton(
-                child: Text("dio请求数据"),
-                onPressed: () {
-                  getData();
-                },
+        child: Column(
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(color: Colors.red),
+              child: Center(
+                child: Text("hshs"),
               ),
-              Text(result)
-            ],
-          ),
+            ),
+            Container(
+              height: 300,
+              decoration: BoxDecoration(color: Colors.amberAccent),
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      print('$index');
+                    },
+                    child: ListTile(
+                      leading: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(shape: BoxShape.circle),
+                        child: Icon(Icons.ac_unit),
+                      ),
+                      title: Text("sdf"),
+                      subtitle: Text("subtitle"),
+                      trailing: Icon(Icons.navigate_next),
+                    ),
+                  );
+                },
+                itemCount: 20,
+              ),
+            )
+          ],
         ),
       ),
     );
